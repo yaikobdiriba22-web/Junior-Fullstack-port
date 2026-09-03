@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded rect -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  <rect width="508" height="508" x="2" y="2" rx="110" fill="none" stroke="#334155" stroke-width="4" stroke-opacity="0.6" />
+
+  <!-- Background ambient glow -->
+  <circle cx="256" cy="256" r="160" fill="url(#glowGrad)" />
+
+  <!-- Code Bracket / Terminal Prompt Symbol: "> _" styled for Yaikob Diriba -->
+  <!-- Chevron > -->
+  <path d="M140 160 L240 256 L140 352" 
+        fill="none" 
+        stroke="url(#primaryGrad)" 
+        stroke-width="36" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+
+  <!-- Terminal underscore _ -->
+  <line x1="270" y1="352" x2="375" y2="352" 
+        stroke="#38BDF8" 
+        stroke-width="36" 
+        stroke-linecap="round" />
+
+  <!-- Monogram subtle accent 'YD' in top corner -->
+  <text x="375" y="195" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-weight="900" 
+        font-size="44" 
+        fill="#818CF8" 
+        letter-spacing="2"
+        text-anchor="end"
+        opacity="0.85">YD</text>
+</svg>
