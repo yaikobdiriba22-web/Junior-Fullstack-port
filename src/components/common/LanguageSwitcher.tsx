@@ -6,11 +6,13 @@ import { useLanguage, Language } from '../../context/LanguageContext';
 interface LanguageSwitcherProps {
   className?: string;
   variant?: 'pill' | 'compact' | 'drawer';
+  layoutIdPrefix?: string;
 }
 
 export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   className = '',
   variant = 'pill',
+  layoutIdPrefix = 'default',
 }) => {
   const { language, setLanguage, toggleLanguage } = useLanguage();
 
@@ -105,7 +107,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       >
         {language === 'en' && (
           <motion.span
-            layoutId="activeNavLangIndicator"
+            layoutId={`activeNavLangIndicator_${layoutIdPrefix}`}
             className="absolute inset-0 rounded-full bg-indigo-600 shadow-sm shadow-indigo-600/30"
             transition={{ type: 'spring', bounce: 0.2, duration: 0.35 }}
           />
@@ -124,7 +126,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       >
         {language === 'am' && (
           <motion.span
-            layoutId="activeNavLangIndicator"
+            layoutId={`activeNavLangIndicator_${layoutIdPrefix}`}
             className="absolute inset-0 rounded-full bg-indigo-600 shadow-sm shadow-indigo-600/30"
             transition={{ type: 'spring', bounce: 0.2, duration: 0.35 }}
           />

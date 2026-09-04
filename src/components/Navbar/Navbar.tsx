@@ -16,12 +16,14 @@ import {
   Linkedin,
   Youtube,
   Send as TelegramIcon,
+  Download,
 } from 'lucide-react';
 import { Container } from '../common/Container';
 import { Button } from '../common/Button';
 import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import { useLanguage } from '../../context/LanguageContext';
 import { socials } from '../../data/socials';
+import { usePWAInstall } from '../../hooks/usePWAInstall';
 
 interface NavbarProps {
   onOpenCV: () => void;
@@ -33,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('hero');
   const { isAmharic } = useLanguage();
+  const { isInstallable, isInstalled, install } = usePWAInstall();
 
   const navItems = [
     { label: isAmharic ? 'መነሻ' : 'Home', href: '#hero', id: 'hero', icon: Home },
@@ -158,7 +161,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
 
           {/* Right: Language switcher, CV & Hire Me button */}
           <div className="hidden md:flex items-center gap-2.5">
-            <LanguageSwitcher />
+            <LanguageSwitcher layoutIdPrefix="desktop" />
+
+            {isInstallable && !isInstalled && (
+              <Button
+                variant="ghost"
+                size="sm"
+                icon={<Download className="w-3.5 h-3.5 text-indigo-400" />}
+                onClick={() => install()}
+                className="text-xs border border-indigo-500/20 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-200"
+              >
+                {isAmharic ? 'መተግበሪያ ጫን' : 'Install App'}
+              </Button>
+            )}
 
             <Button
               variant="outline"
@@ -183,7 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
 
           {/* Mobile Menu Trigger */}
           <div className="flex md:hidden items-center gap-2">
-            <LanguageSwitcher />
+            <LanguageSwitcher layoutIdPrefix="mobile" />
             <motion.button
               whileTap={{ scale: 0.92 }}
               onClick={() => setMobileMenuOpen(true)}
@@ -252,6 +267,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
 
               {/* Drawer Body */}
               <div className="p-5 flex-1 flex flex-col">
+                {/* Language Switcher inside Drawer */}
+                <div className="mb-4">
+                  <LanguageSwitcher variant="drawer" />
+                </div>
+
                 {/* Availability status badge */}
                 <div className="mb-4 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
@@ -321,6 +341,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
 
                 {/* Quick Actions inside Drawer */}
                 <div className="mt-6 pt-5 border-t border-white/[0.08] flex flex-col gap-2.5">
+                  {isInstallable && !isInstalled && (
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      icon={<Download className="w-4 h-4" />}
+                      onClick={async () => {
+                        setMobileMenuOpen(false);
+                        await install();
+                      }}
+                      className="w-full justify-center text-xs py-2.5 bg-gradient-to-r from-indigo-600 to-cyan-600 shadow-md shadow-indigo-500/25"
+                    >
+                      {isAmharic ? 'መተግበሪያውን ስልክ ላይ ጫን' : 'Install App to Device'}
+                    </Button>
+                  )}
+
                   <Button
                     variant="outline"
                     size="sm"

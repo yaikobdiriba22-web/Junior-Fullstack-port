@@ -15,6 +15,7 @@ import { Contact } from './components/Contact/Contact';
 import { Footer } from './components/Footer/Footer';
 import { CVModal } from './components/CVModal/CVModal';
 import { EasterEggModal } from './components/EasterEgg/EasterEggModal';
+import { PWAInstallBanner } from './components/common/PWAInstallBanner';
 
 export default function App() {
   const [isCVOpen, setIsCVOpen] = useState(false);
@@ -95,6 +96,9 @@ export default function App() {
 
         {/* 12. Minimalist Footer (Section 22) */}
         <Footer onOpenEasterEgg={() => setIsEasterEggOpen(true)} />
+
+        {/* PWA Install Prompt & Offline State */}
+        <PWAInstallBanner />
 
         {/* Modals */}
         <CVModal isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
