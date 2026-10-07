@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Explore premium portfolio and CV action",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "hero navigation",
+      "premium responsive layout",
+      "CV download action",
+      "about",
+      "skills",
+      "projects",
+      "education",
+      "contact"
+    ],
+    "description": "Verifies the recruiter-facing portfolio remains navigable and exposes the CV action.",
+    "steps": [
+      "Open the portfolio",
+      "Use navigation to open Projects and Contact",
+      "Select Download CV"
+    ],
+    "expected": "The premium portfolio sections are reachable and the Download CV action opens the browser print dialog for saving the CV as PDF."
+  },
+  {
+    "name": "Open project and profile links",
+    "viewport": "desktop",
+    "covers": [
+      "project links",
+      "GitHub link",
+      "LinkedIn link"
+    ],
+    "description": "Verifies selected work and professional profile links are available.",
+    "steps": [
+      "Open Projects",
+      "Select a project link",
+      "Open GitHub and LinkedIn"
+    ],
+    "expected": "Project and professional links are visible and point to their configured destinations."
+  },
+  {
+    "name": "Use responsive mobile navigation and CV action",
+    "viewport": "mobile",
+    "covers": [
+      "responsive layout",
+      "mobile navigation",
+      "mobile project browsing",
+      "mobile CV action"
+    ],
+    "description": "Verifies the premium portfolio remains usable at a phone-sized viewport.",
+    "steps": [
+      "Open the portfolio on mobile",
+      "Open the navigation menu",
+      "Navigate to Contact and select Download CV"
+    ],
+    "expected": "The mobile menu works, content fits without horizontal overflow, and the CV action is available."
+  },
+  {
+    "name": "Use contact action",
+    "viewport": "mobile",
+    "covers": [
+      "mailto contact action",
+      "contact social links"
+    ],
+    "description": "Verifies visitors have a clear direct contact path.",
+    "steps": [
+      "Open Contact",
+      "Select the email contact action",
+      "Review LinkedIn and GitHub actions"
+    ],
+    "expected": "The configured email action and professional profile links are visible and usable."
+  }
+]
